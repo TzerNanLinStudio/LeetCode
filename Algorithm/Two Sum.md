@@ -1,8 +1,10 @@
 # 1. Problem
 
-The name of the problem is Two Sum on LeetCode. Please refer to [the link](https://leetcode.com/problems/two-sum/?envType=list&envId=ol6q4f5j).
+The description of the problem is on LeetCode. Please refer to [the link](https://leetcode.com/problems/two-sum/?envType=list&envId=ol6q4f5j).
 
 # 2. Solution
+
+There are three versions in different programming language.
 
 ## 2.1. C++
 
