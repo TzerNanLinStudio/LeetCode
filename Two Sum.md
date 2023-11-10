@@ -40,7 +40,7 @@ public class Solution {
 }
 ```
 
-## 2.2. Python3
+## 2.3. Python3
 
 ```python
 class Solution:
