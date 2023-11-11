@@ -28,6 +28,8 @@ public class Solution {
 
 ### 2.2.1. Method One
 
+O(m×n)
+
 ```csharp
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
@@ -46,7 +48,9 @@ public class Solution {
 
 ### 2.2.2. Method Two
 
-This method is not good enough. It can pass some testcase but will exceed Time Limit if input is too complex.
+This method is not good enough. It can pass some testcase but will exceed Time Limit if input is too complex. Between \( O(n^4) \) to \( O(n^5) \)
+4
+ )
 
 ```csharp
     public int MaximalSquare(char[][] matrix) {
