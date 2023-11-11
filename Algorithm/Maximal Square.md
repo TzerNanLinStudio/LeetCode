@@ -26,6 +26,8 @@ public class Solution {
 
 ## 2.2. C#
 
+## 2.2.1. Method One
+
 ```csharp
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
@@ -40,6 +42,29 @@ public class Solution {
         return default;
     }
 }
+```
+
+## 2.2.1. Method Two
+
+```csharp
+    public int MaximalSquare(char[][] matrix) {
+        int max_length = matrix.Length > matrix[0].Length ? matrix[0].Length : matrix.Length;
+        for (int i = max_length; i > 0; i--) 
+            for (int j = 0; j + i <= matrix.Length; j++)
+                for (int k = 0; k + i <= matrix[0].Length; k++)
+                    if (CheckValue(matrix, j, k, i))
+                        return i * i;
+        return 0;
+
+    }
+
+    public bool CheckValue(char[][] matrix, int x, int y, int length) {
+        for (int i = 0; i < length; i++)
+            for (int j = 0; j < length; j++)
+                if (matrix[x + i][y + j] == '0')
+                    return false;
+        return true;
+    }
 ```
 
 ## 2.3. Python3
