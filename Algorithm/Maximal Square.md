@@ -57,7 +57,6 @@ This method is not good enough. It can pass some testcase but will exceed Time L
                     if (CheckValue(matrix, j, k, i))
                         return i * i;
         return 0;
-
     }
 
     public bool CheckValue(char[][] matrix, int x, int y, int length) {
