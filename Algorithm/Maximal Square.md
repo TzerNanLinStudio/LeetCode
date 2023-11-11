@@ -44,7 +44,9 @@ public class Solution {
 }
 ```
 
-## 2.2.1. Method Two
+## 2.2.2. Method Two
+
+This method is not good enough. It can pass some testcase but will exceed Time Limit if input is too complex.
 
 ```csharp
     public int MaximalSquare(char[][] matrix) {
