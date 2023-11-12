@@ -26,34 +26,9 @@ public class Solution {
 
 ## 2.2. C#
 
-### 2.2.1. Method One
+### 2.2.1. Approach One
 
-O(m×n)
-
-```csharp
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-        var pairs = new Dictionary<int, int>();
-
-        for (int i = 0; i < nums.Length; i++)
-            if (pairs.ContainsKey(target - nums[i]))
-                return new int [] {pairs[target - nums[i]], i};
-            else
-                pairs.TryAdd(nums[i], i);
-        
-        return default;
-    }
-}
-```
-
-### 2.2.2. Method Two
-
-This method is not good enough. It can pass some testcase but will exceed Time Limit if input is too complex. Between \( O(n^4) \) to \( O(n^5) \)
-
-
-$$
-O(n^2m^2)
-$$
+This approach is less efficient because it repeatedly checks each potential square without leveraging any prior computations, leading to a large number of redundant operations, especially on larger matrices. The time complexity is $O(n^2m^2)$.
 
 ```csharp
 public class Solution {
@@ -73,6 +48,37 @@ public class Solution {
                 if (matrix[x + i][y + j] == '0')
                     return false;
         return true;
+    }
+}
+```
+
+### 2.2.2. Approach Two
+
+This approach chooses _Dynamic Programming_. The time complexity is $O(nm)$.
+
+```csharp
+public class Solution {
+    int[,] dp;
+
+    public int MaximalSquare(char[][] matrix) {
+        int row = matrix.Length;
+        int col = matrix[0].Length;
+        dp = new int[row + 1, col + 1];
+        return MaxArea(matrix, row, col);
+    }
+
+    public int MaxArea(char[][] matrix, int row, int col) {
+        int max = 0;
+        for(int r = 0; r < row; r++)
+            for(int c = 0; c < col; c++){
+                // The value of dp[r + 1, c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
+                if(matrix[r][c] =='1') 
+                    dp[r + 1, c + 1] = Math.Min(dp[r, c], Math.Min(dp[r + 1, c], dp[r , c + 1])) + 1;
+                else 
+                    dp[r + 1, c + 1] = 0;
+                max = Math.Max(max, dp[r + 1, c + 1]);
+            }
+        return max * max;
     }
 }
 ```
