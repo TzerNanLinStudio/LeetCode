@@ -56,6 +56,7 @@ O(n^4)
 $$
 
 ```csharp
+public class Solution {
     public int MaximalSquare(char[][] matrix) {
         int max_length = matrix.Length > matrix[0].Length ? matrix[0].Length : matrix.Length;
         for (int i = max_length; i > 0; i--) 
@@ -73,6 +74,7 @@ $$
                     return false;
         return true;
     }
+}
 ```
 
 ## 2.3. Python3
