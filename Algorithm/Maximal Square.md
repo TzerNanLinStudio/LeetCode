@@ -9,19 +9,25 @@ There are three versions in different programming language.
 ## 2.1. C++
 
 ```cpp
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-        var pairs = new Dictionary<int, int>();
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+        std::vector<std::vector<int>> dp(row + 1, std::vector<int>(col + 1, 0));
+        int max = 0;
 
-        for (int i = 0; i < nums.Length; i++)
-            if (pairs.ContainsKey(target - nums[i]))
-                return new int [] {pairs[target - nums[i]], i};
-            else
-                pairs.TryAdd(nums[i], i);
-        
-        return default;
+        for(int r = 0; r < row; ++r)
+            for(int c = 0; c < col; ++c) {
+                // The value of dp[r + 1][c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
+                if(matrix[r][c] == '1') {
+                    dp[r + 1][c + 1] = std::min({dp[r][c], dp[r + 1][c], dp[r][c + 1]}) + 1;
+                    max = std::max(max, dp[r + 1][c + 1]);
+                }
+            }
+        return max * max;
     }
-}
+};
 ```
 
 ## 2.2. C#
