@@ -15,8 +15,8 @@ public:
         int row = matrix.size();
         int col = matrix[0].size();
         std::vector<std::vector<int>> dp(row + 1, std::vector<int>(col + 1, 0));
+        
         int max = 0;
-
         for(int r = 0; r < row; ++r)
             for(int c = 0; c < col; ++c) {
                 // The value of dp[r + 1][c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
@@ -25,6 +25,7 @@ public:
                     max = std::max(max, dp[r + 1][c + 1]);
                 }
             }
+
         return max * max;
     }
 };
