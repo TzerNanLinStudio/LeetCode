@@ -92,5 +92,6 @@ class Solution:
             number = number * 10 + int(s[index])
             index += 1
 
+        print("The answer is ", number * sign)
         return number * sign
 ```
