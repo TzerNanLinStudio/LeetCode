@@ -74,17 +74,23 @@ public class Solution {
 
 ```python
 class Solution:
-    def maximalSquare(self, matrix: List[List[str]]) -> int:
-        rows = len(matrix)
-        cols = len(matrix[0])
-        dp = [[0] * (cols + 1) for _ in range(rows + 1)]
+    def myAtoi(self, s: str) -> int:
+        index = 0
+        while index < len(s) and s[index] == ' ':
+            index += 1
 
-        max_side = 0
-        for r in range(rows):
-            for c in range(cols):
-                if matrix[r][c] == '1':
-                    dp[r + 1][c + 1] = min(dp[r][c], dp[r + 1][c], dp[r][c + 1]) + 1
-                    max_side = max(max_side, dp[r + 1][c + 1])
+        sign = 1
+        if index < len(s) and (s[index] == '-' or s[index] == '+'):
+            if s[index] == '-':
+                sign = -1
+            index += 1
 
-        return max_side * max_side
+        number = 0
+        while index < len(s) and s[index].isdigit():
+            if number > (2**31 - 1) // 10 or (number == (2**31 - 1) // 10 and int(s[index]) > 7):
+                return -2**31 if sign == -1 else 2**31 - 1
+            number = number * 10 + int(s[index])
+            index += 1
+
+        return number * sign
 ```
