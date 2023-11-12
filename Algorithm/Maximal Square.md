@@ -52,7 +52,7 @@ This method is not good enough. It can pass some testcase but will exceed Time L
 
 
 $$
-O(n^4)
+O(n^2m^2)
 $$
 
 ```csharp
