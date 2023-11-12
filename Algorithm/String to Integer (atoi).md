@@ -4,8 +4,6 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 # 2. Solution
 
-There are three versions in different programming language.
-
 ## 2.1. C++
 
 ```cpp
