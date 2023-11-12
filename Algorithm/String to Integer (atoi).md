@@ -11,22 +11,28 @@ There are three versions in different programming language.
 ```cpp
 class Solution {
 public:
-    int maximalSquare(vector<vector<char>>& matrix) {
-        int row = matrix.size();
-        int col = matrix[0].size();
-        std::vector<std::vector<int>> dp(row + 1, std::vector<int>(col + 1, 0));
-        
-        int max = 0;
-        for(int r = 0; r < row; ++r)
-            for(int c = 0; c < col; ++c) {
-                // The value of dp[r + 1][c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
-                if(matrix[r][c] == '1') {
-                    dp[r + 1][c + 1] = std::min({dp[r][c], dp[r + 1][c], dp[r][c + 1]}) + 1;
-                    max = std::max(max, dp[r + 1][c + 1]);
-                }
-            }
+    int myAtoi(string s) {
+        int index = 0;
+        while (index < s.size() && s[index] == ' ') 
+            index++;
 
-        return max * max;
+        int sign = 1;
+        if (s[index] == '-' || s[index] == '+') {
+            if (s[index] == '-')
+                sign = -1;
+            index++;
+        }
+
+        int number = 0;
+        while (index < s.size() && isdigit(s[index])) {
+            if (number > INT_MAX / 10 || (number == INT_MAX / 10 && s[index] - '0' > 7))
+                return (sign == -1) ? INT_MIN : INT_MAX; 
+            number = number * 10 + (s[index] - '0');
+            index++;
+        }
+
+        std::cout << "The answer is " << number * sign;
+        return number * sign;
     }
 };
 ```
