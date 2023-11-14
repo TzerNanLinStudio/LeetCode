@@ -1,6 +1,6 @@
 # 1. Problem
 
-The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/string-to-integer-atoi/description/).
+The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/string-to-integer-atoi/).
 
 # 2. Solution
 
