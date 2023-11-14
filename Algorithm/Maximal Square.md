@@ -1,6 +1,6 @@
 # 1. Problem
 
-The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/two-sum/?envType=list&envId=ol6q4f5j).
+The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/two-sum/).
 
 # 2. Solution
 
