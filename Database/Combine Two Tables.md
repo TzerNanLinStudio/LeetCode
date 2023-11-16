@@ -1,4 +1,4 @@
-# Problem
+# 1. Problem
 
 The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/combine-two-tables/).
 
