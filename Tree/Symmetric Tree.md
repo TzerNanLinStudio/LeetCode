@@ -6,45 +6,43 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ## 2.1. Java
 
-```cpp
+```java
 /**
- * Definition for singly-linked list.
- * struct ListNode {
+ * Definition for a binary tree node.
+ * public class TreeNode {
  *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
  */
+
 class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* dummyHead = new ListNode(0);
-        ListNode* tail = dummyHead;
-        int carry = 0;
-
-        while (l1 != nullptr || l2 != nullptr || carry != 0) {
-            int digit1 = (l1 != nullptr) ? l1->val : 0;
-            int digit2 = (l2 != nullptr) ? l2->val : 0;
-
-            int sum = digit1 + digit2 + carry;
-            int digit = sum % 10;
-            carry = sum / 10;
-
-            ListNode* newNode = new ListNode(digit);
-            tail->next = newNode;
-            tail = tail->next;
-
-            l1 = (l1 != nullptr) ? l1->next : nullptr;
-            l2 = (l2 != nullptr) ? l2->next : nullptr;
-        }
-
-        ListNode* result = dummyHead->next;
-        delete dummyHead;
-        return result;
+    public boolean isSymmetric(TreeNode root) {
+	    return isSymmetric(root.left, root.right);
     }
-};
+
+    public boolean isSymmetric(TreeNode rootleft, TreeNode rootright) {
+        if (rootleft == null && rootright == null)
+            return true;
+        else if (rootleft == null || rootright == null)
+            return false;
+        else if (rootleft.val != rootright.val)
+            return false;
+        else if (!isSymmetric(rootleft.left, rootright.right))
+            return false;
+        else if (!isSymmetric(rootleft.right, rootright.left))
+            return false;
+        else
+            return true;
+    }
+}
 ```
 
 ## 2.2. C
@@ -68,7 +66,7 @@ bool isSymmetric(struct TreeNode* root){
 bool checkTree(struct TreeNode* L, struct TreeNode* R){
     if (L == NULL && R == NULL)
         return true;
-    if ((L == NULL && R != NULL) || (L != NULL && R == NULL))
+    if (L == NULL || R == NULL)
         return false;
     if (L->val == R->val)
         return true && checkTree(L->right, R->left) && checkTree(L->left, R->right);
