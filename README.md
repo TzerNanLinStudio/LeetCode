@@ -4,4 +4,4 @@ This repository serves as a curated platform where I organize a variety of progr
 
 My programming expertise includes a strong proficiency in **C++**, **C#**, and **Python**. In addition to these, I also have practical experience with other languages such as **C**, **Java**, **Matlab**, and **SQL**. Below is a chart showing the number of problems I have tackled on LeetCode as of November 10, 2023.
 
-![Image Error](./SolvedProblem.png)
+![Image Error](./SolvedProblem_20231118.png)
