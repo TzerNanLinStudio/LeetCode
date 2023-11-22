@@ -8,41 +8,33 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ```cpp
 /**
- * Definition for singly-linked list.
- * struct ListNode {
+ * Definition for a binary tree node.
+ * struct TreeNode {
  *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* dummyHead = new ListNode(0);
-        ListNode* tail = dummyHead;
-        int carry = 0;
+    int minDepth(TreeNode* root) {
+        if (root == nullptr)
+            return 0;
 
-        while (l1 != nullptr || l2 != nullptr || carry != 0) {
-            int digit1 = (l1 != nullptr) ? l1->val : 0;
-            int digit2 = (l2 != nullptr) ? l2->val : 0;
+        if (root->left == nullptr && root->right == nullptr)
+            return 1;
+        
+        if (root->left == nullptr)
+            return minDepth(root->right) + 1;
+        
+        if (root->right == nullptr)
+            return minDepth(root->left) + 1;
 
-            int sum = digit1 + digit2 + carry;
-            int digit = sum % 10;
-            carry = sum / 10;
-
-            ListNode* newNode = new ListNode(digit);
-            tail->next = newNode;
-            tail = tail->next;
-
-            l1 = (l1 != nullptr) ? l1->next : nullptr;
-            l2 = (l2 != nullptr) ? l2->next : nullptr;
-        }
-
-        ListNode* result = dummyHead->next;
-        delete dummyHead;
-        return result;
+        return std::min(minDepth(root->left),  minDepth(root->right)) + 1;
     }
 };
 ```
