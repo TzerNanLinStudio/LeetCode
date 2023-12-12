@@ -33,26 +33,24 @@ public:
 
 ### 2.2.1. Approach One
 
-This approach is less efficient because it repeatedly checks each potential square without leveraging any prior computations, leading to a large number of redundant operations, especially on larger matrices. The time complexity is $O(n^2m^2)$.
+The worst-case time complexity of this approach be is $O(n^2)$.
 
 ```csharp
 public class Solution {
-    public int MaximalSquare(char[][] matrix) {
-        int max_length = matrix.Length > matrix[0].Length ? matrix[0].Length : matrix.Length;
-        for (int i = max_length; i > 0; i--) 
-            for (int j = 0; j + i <= matrix.Length; j++)
-                for (int k = 0; k + i <= matrix[0].Length; k++)
-                    if (CheckValue(matrix, j, k, i))
-                        return i * i;
-        return 0;
-    }
+    public int FirstMissingPositive(int[] nums) {
+        int number = 1;
+        HashSet<int> set = new();
 
-    public bool CheckValue(char[][] matrix, int x, int y, int length) {
-        for (int i = 0; i < length; i++)
-            for (int j = 0; j < length; j++)
-                if (matrix[x + i][y + j] == '0')
-                    return false;
-        return true;
+        for (int i = 0; i < nums.Length; i++) {
+            set.Add(nums[i]);
+
+            if (number == nums[i])
+                do 
+                    number++;
+                while (set.Contains(number));
+        }
+
+        return number;
     }
 }
 ```
