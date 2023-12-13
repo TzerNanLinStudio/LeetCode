@@ -61,27 +61,16 @@ Sorting the array is $O(n * log(n))$. Iterating through the sorted array is $O(n
 
 ```csharp
 public class Solution {
-    int[,] dp;
+    public int FirstMissingPositive(int[] nums) {
+        int smallest = 1;
+        Array.Sort(nums);
 
-    public int MaximalSquare(char[][] matrix) {
-        int row = matrix.Length;
-        int col = matrix[0].Length;
-        dp = new int[row + 1, col + 1];
-        return MaxArea(matrix, row, col);
-    }
+        foreach (int num in nums) {
+            if (smallest == num)
+                smallest++;
+        }
 
-    public int MaxArea(char[][] matrix, int row, int col) {
-        int max = 0;
-        for(int r = 0; r < row; r++)
-            for(int c = 0; c < col; c++){
-                // The value of dp[r + 1, c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
-                if(matrix[r][c] =='1') 
-                    dp[r + 1, c + 1] = Math.Min(dp[r, c], Math.Min(dp[r + 1, c], dp[r , c + 1])) + 1;
-                else 
-                    dp[r + 1, c + 1] = 0;
-                max = Math.Max(max, dp[r + 1, c + 1]);
-            }
-        return max * max;
+        return smallest;
     }
 }
 ```
