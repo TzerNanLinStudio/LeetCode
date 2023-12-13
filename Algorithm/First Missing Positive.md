@@ -4,7 +4,37 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 # 2. Solution
 
-## 2.1. C++
+## 2.1. C
+
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+bool checkTree(struct TreeNode* L, struct TreeNode* R);
+
+bool isSymmetric(struct TreeNode* root){
+    return checkTree(root->left, root->right);
+}
+
+bool checkTree(struct TreeNode* L, struct TreeNode* R){
+    if (L == NULL && R == NULL)
+        return true;
+    if (L == NULL || R == NULL)
+        return false;
+    if (L->val == R->val)
+        return true && checkTree(L->right, R->left) && checkTree(L->left, R->right);
+    else
+        return false;    
+}
+```
+
+## 2.2. C++
 
 ```cpp
 class Solution {
@@ -29,9 +59,9 @@ public:
 };
 ```
 
-## 2.2. C#
+## 2.3. C#
 
-### 2.2.1. Approach One
+### 2.3.1. Approach One
 
 The worst-case time complexity of this approach be is $O(n^2)$.
 
@@ -55,7 +85,7 @@ public class Solution {
 }
 ```
 
-### 2.2.2. Approach Two
+### 2.3.2. Approach Two
 
 Sorting the array is $O(n * log(n))$. Iterating through the sorted array is $O(n)$. The dominant factor for time complexity is indeed the sorting step, which is $O(n * log(n))$.
 
@@ -75,7 +105,7 @@ public class Solution {
 }
 ```
 
-## 2.3. Python3
+## 2.4. Python3
 
 ```python
 class Solution:
