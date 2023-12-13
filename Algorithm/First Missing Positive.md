@@ -57,7 +57,7 @@ public class Solution {
 
 ### 2.2.2. Approach Two
 
-This approach chooses _Dynamic Programming_. The time complexity is $O(nm)$.
+Sorting the array is $O(n * log(n))$. Iterating through the sorted array is $O(n)$. The dominant factor for time complexity is indeed the sorting step, which is O(n * log(n)).
 
 ```csharp
 public class Solution {
