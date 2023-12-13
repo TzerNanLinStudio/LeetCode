@@ -80,9 +80,9 @@ public class Solution {
 ```python
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        count = 1 
         nums = set(nums)
-        while count in nums:
-            count +=1
-        return count
+        smallest = 1
+        while smallest in nums:
+            smallest+=1
+        return smallest
 ```
