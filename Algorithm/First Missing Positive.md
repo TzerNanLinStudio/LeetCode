@@ -6,6 +6,8 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ## 2.1. C
 
+The time complexity of this approach is $O(n)$. 
+
 ```c
 /**
  * Definition for a binary tree node.
