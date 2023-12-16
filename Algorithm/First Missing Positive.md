@@ -9,30 +9,15 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 The time complexity of this approach is $O(n)$. 
 
 ```c
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     struct TreeNode *left;
- *     struct TreeNode *right;
- * };
- */
-
-bool checkTree(struct TreeNode* L, struct TreeNode* R);
-
-bool isSymmetric(struct TreeNode* root){
-    return checkTree(root->left, root->right);
-}
-
-bool checkTree(struct TreeNode* L, struct TreeNode* R){
-    if (L == NULL && R == NULL)
-        return true;
-    if (L == NULL || R == NULL)
-        return false;
-    if (L->val == R->val)
-        return true && checkTree(L->right, R->left) && checkTree(L->left, R->right);
-    else
-        return false;    
+int firstMissingPositive(int* nums, int size) {
+    int *n = (int*)calloc(size, 4);
+    for(int i = 0; i < size ; i++)
+        if (nums[i] <= size && nums[i] > 0)
+            n[nums[i]-1] = nums[i];
+    for(int i = 0 ; i < size; i++)
+        if (n[i] == 0)
+            return i+1;
+    return size + 1;
 }
 ```
 
