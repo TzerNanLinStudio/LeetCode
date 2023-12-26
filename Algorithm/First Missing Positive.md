@@ -10,13 +10,13 @@ The time complexity of this approach is $O(n)$.
 
 ```c
 int firstMissingPositive(int* nums, int size) {
-    int *n = (int*)calloc(size, 4);
-    for(int i = 0; i < size ; i++)
+    int* rank = (int*)calloc(size, 4); // Allocate memory for an array 'rank' of size 'size' using calloc, initializing all elements to 0. Each element is of size 4 bytes (size of an int).
+    for (int i = 0; i < size; i++)
         if (nums[i] <= size && nums[i] > 0)
-            n[nums[i]-1] = nums[i];
-    for(int i = 0 ; i < size; i++)
-        if (n[i] == 0)
-            return i+1;
+            rank[nums[i] - 1] = nums[i];
+    for (int i = 0; i < size; i++)
+        if (rank[i] == 0)
+            return i + 1;
     return size + 1;
 }
 ```
