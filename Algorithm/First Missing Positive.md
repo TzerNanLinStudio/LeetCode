@@ -26,22 +26,16 @@ int firstMissingPositive(int* nums, int size) {
 ```cpp
 class Solution {
 public:
-    int maximalSquare(vector<vector<char>>& matrix) {
-        int row = matrix.size();
-        int col = matrix[0].size();
-        std::vector<std::vector<int>> dp(row + 1, std::vector<int>(col + 1, 0));
-        
-        int max = 0;
-        for(int r = 0; r < row; ++r)
-            for(int c = 0; c < col; ++c) {
-                // The value of dp[r + 1][c + 1] represents the side length of the largest square whose bottom-right corner is at (r, c) in the original matrix.
-                if(matrix[r][c] == '1') {
-                    dp[r + 1][c + 1] = std::min({dp[r][c], dp[r + 1][c], dp[r][c + 1]}) + 1;
-                    max = std::max(max, dp[r + 1][c + 1]);
-                }
-            }
-
-        return max * max;
+    int firstMissingPositive(vector<int>& nums) {
+        int n = nums.size();
+        vector<bool> hashArray(n, false);
+        for (int num : nums)
+            if (1 <= num && num <= n)
+                hashArray[num - 1] = true;
+        for (int i = 0; i < n; i++)
+            if (!hashArray[i])
+                return i + 1;
+        return n + 1;
     }
 };
 ```
