@@ -6,10 +6,30 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ## 2.1. C
 
-The time complexity of this approach is $O(n)$. 
-
 ```c
-
+int romanToInt(char* s) {
+    int roman['X' + 1] = {
+        ['I'] = 1, // ASCII = 73
+        ['V'] = 5, // ASCII = 86
+        ['X'] = 10, // ASCII = 88
+        ['L'] = 50, // ASCII = 76
+        ['C'] = 100, // ASCII = 67
+        ['D'] = 500, // ASCII = 68
+        ['M'] = 1000, // ASCII = 77
+    };
+    
+    int answer = 0;
+    
+    // When i is at the last character of the string, s[i+1] will be the null character ('\0'), which corresponds to 0 in the array roman.
+    // Since Roman numeral values are always positive, this ensures the expression roman[s[i]] < roman[s[i+1]] is safe at the end of the string and does not cause an out-of-bounds error.
+    for (int i = 0; s[i]; i++)
+        if (roman[s[i]] < roman[s[i + 1]])
+            answer -= roman[s[i]];
+        else
+            answer += roman[s[i]];
+    
+    return answer;
+}
 ```
 
 ## 2.2. C++
