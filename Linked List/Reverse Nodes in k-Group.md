@@ -33,7 +33,7 @@ public:
         if (k == 1 || head->next == nullptr)
             return head;
 
-        while (latter_pointer != nullptr) {
+        while (latter_pointer != nullptr)
             if (++number == k) {
                 ListNode* original_head = former_pointer == nullptr ? head : former_pointer->next;
                 ListNode* original_tail = latter_pointer;
@@ -51,7 +51,6 @@ public:
             }
             else 
                 latter_pointer = latter_pointer->next;
-        }
         
         return head;
     }
