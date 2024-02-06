@@ -7,7 +7,47 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 ## 2.1. C
 
 ```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+int length(struct ListNode* head) {
+    struct ListNode* temp = head;
+    int count = 0;
 
+    while(temp != NULL){
+        count++;
+        temp = temp->next;
+    }
+
+    return count;
+}
+
+struct ListNode* reverseKGroup(struct ListNode* head, int k) {
+    if (head == NULL || head->next == NULL || k > length(head))
+        return head;
+
+    struct ListNode* prev = NULL;
+    struct ListNode* curr = head;
+    struct ListNode* next = NULL;
+    int count = 0;
+
+    while(count < k && curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        count++;
+    }
+
+    if (next != NULL)
+        head->next = reverseKGroup(next, k);
+
+    return prev;
+}
 ```
 
 ## 2.2. C++
@@ -122,7 +162,7 @@ public:
         }
         
         // Recursive Call for remaining Nodes
-        if (curr != 0)
+        if (curr != NULL)
             head->next = reverseKGroup(curr, k);
         
         // Return head of modified linked list
