@@ -18,7 +18,7 @@ int length(struct ListNode* head) {
     struct ListNode* temp = head;
     int count = 0;
 
-    while(temp != NULL){
+    while (temp != NULL) {
         count++;
         temp = temp->next;
     }
@@ -27,7 +27,7 @@ int length(struct ListNode* head) {
 }
 
 struct ListNode* reverseKGroup(struct ListNode* head, int k) {
-    if (head == NULL || head->next == NULL || k > length(head))
+    if (head->next == NULL || k > length(head))
         return head;
 
     struct ListNode* prev = NULL;
@@ -35,7 +35,7 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k) {
     struct ListNode* next = NULL;
     int count = 0;
 
-    while(count < k && curr != NULL) {
+    while (count < k && curr != NULL) {
         next = curr->next;
         curr->next = prev;
         prev = curr;
