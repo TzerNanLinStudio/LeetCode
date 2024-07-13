@@ -17,10 +17,10 @@ public:
         int x = 0; 
         int y = 0;
         int side = 1;
-        int topEdge = 1;
         int rightEdge = n - 1;
         int bottomEdge = n - 1;
         int leftEdge = 0;
+        int topEdge = 1;
 
         while (index <= n * n) {
             matrix[y][x] = index;
