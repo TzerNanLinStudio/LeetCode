@@ -6,6 +6,8 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ## 2.1. C++
 
+This is my initial idea, though it may not be the best approach.
+
 ```cpp
 /**
 * Definition for singly-linked list.
