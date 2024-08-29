@@ -1,10 +1,14 @@
 # 1. Problem
 
-The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/is-subsequence/).
+The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/ransom-note/).
 
 # 2. Solution
 
 ## 2.1. C++
+
+### 2.2.1. Approach One
+
+This is my initial idea, though it may not be the best approach.
 
 ```cpp
 class Solution {
@@ -26,6 +30,10 @@ public:
     }
 };
 ```
+
+### 2.2.1. Approach One
+
+This is ChatGPT's idea, though it may be a better approach.
 
 ```cpp
 class Solution {
