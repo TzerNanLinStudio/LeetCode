@@ -31,7 +31,7 @@ public:
 };
 ```
 
-### 2.2.1. Approach One
+### 2.2.1. Approach Two
 
 This is ChatGPT's idea, though it may be a better approach.
 
