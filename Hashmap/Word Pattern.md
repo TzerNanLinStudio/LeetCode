@@ -6,6 +6,7 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 
 ## 2.1. C++
 
+```cpp
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
@@ -48,3 +49,5 @@ public:
         return true;
     }
 };
+```
+
