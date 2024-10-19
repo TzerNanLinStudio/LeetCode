@@ -6,7 +6,7 @@ The description of the problem is on LeetCode. Please refer to [Link]https://lee
 
 ## 2.1. C++
 
-The time complexity is **O(n)** because each element is inserted and looked up in the unordered map at most once, and both insertion and lookup operations have an average time complexity of **O(1)**.
+The time complexity is **O(n)**.
 
 ```cpp
 /**
