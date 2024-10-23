@@ -1,6 +1,6 @@
 # 1. Problem
 
-The description of the problem is on LeetCode. Please refer to [Link]https://leetcode.com/problems/contains-duplicate-ii/).
+The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/contains-duplicate-ii/).
 
 # 2. Solution
 
