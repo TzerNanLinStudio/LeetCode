@@ -1,6 +1,6 @@
 # 1. Problem
 
-The description of the problem is on LeetCode. Please refer to [Link]https://leetcode.com/problems/path-sum/).
+The description of the problem is on LeetCode. Please refer to [Link](https://leetcode.com/problems/path-sum/).
 
 # 2. Solution
 
