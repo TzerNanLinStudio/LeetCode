@@ -11,42 +11,57 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 class RandomizedSet {
 public:
     RandomizedSet() {
+        // Constructor - 初始化時不需要額外操作
     }
 
+    /**
+     * Inserts a value into the set.
+     * @param val The value to insert.
+     * @return True if the value was successfully inserted, false if it already exists.
+     */
     bool insert(int val) {
-        if (valueIndexMap.find(val) != valueIndexMap.end()) {
-            return false; // Value already exists
+        if (valueToIndex.find(val) != valueToIndex.end()) {
+            return false; // Value already exists in the set
         }
-        numbers.push_back(val);
-        valueIndexMap[val] = numbers.size() - 1; // Store index in the map
+        
+        values.push_back(val); // Add value to the end of the vector
+        valueToIndex[val] = values.size() - 1; // Store the value's index in the map
         return true;
     }
 
+    /**
+     * Removes a value from the set.
+     * @param val The value to remove.
+     * @return True if the value was successfully removed, false if it does not exist.
+     */
     bool remove(int val) {
-        if (valueIndexMap.find(val) == valueIndexMap.end()) {
-            return false; // Value does not exist
+        if (valueToIndex.find(val) == valueToIndex.end()) {
+            return false; // Value does not exist in the set
         }
-        int index = valueIndexMap[val]; // Get the index of the value
-        int lastValue = numbers.back(); // Get the last value in the vector
 
-        // Swap the value to remove with the last value
-        numbers[index] = lastValue;
-        valueIndexMap[lastValue] = index; // Update the index of the swapped value
-
-        numbers.pop_back(); // Remove the last element
-        valueIndexMap.erase(val); // Erase the value from the map
-
+        // Overwrite the value to remove with the last value in the vector
+        values[valueToIndex[val]] = values[values.size() - 1];
+        
+        // Update the map to reflect the new index of the last value
+        valueToIndex[values[values.size() - 1]] = valueToIndex[val];
+        
+        // Remove the last value from the vector and erase the value from the map
+        values.pop_back();
+        valueToIndex.erase(val);
         return true;
     }
 
+    /**
+     * Returns a random value from the set.
+     * @return A random value from the set.
+     */
     int getRandom() {
-        int randomIndex = rand() % numbers.size(); // Get a random index
-        return numbers[randomIndex];
+        return values[rand() % values.size()]; // Return the value at the random index
     }
 
 private:
-    std::vector<int> numbers; // Stores the elements
-    std::unordered_map<int, int> valueIndexMap; // Maps values to their indices
+    std::vector<int> values; // Stores the values in the set
+    std::unordered_map<int, int> valueToIndex; // Maps each value to its index in the vector
 };
 
 /**
