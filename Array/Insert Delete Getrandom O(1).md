@@ -11,7 +11,6 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 class RandomizedSet {
 public:
     RandomizedSet() {
-        srand(time(0)); // Seed the random number generator once
     }
 
     bool insert(int val) {
