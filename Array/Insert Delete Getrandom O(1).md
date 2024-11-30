@@ -11,7 +11,7 @@ The description of the problem is on LeetCode. Please refer to [Link](https://le
 class RandomizedSet {
 public:
     RandomizedSet() {
-        // Constructor - 初始化時不需要額外操作
+
     }
 
     /**
